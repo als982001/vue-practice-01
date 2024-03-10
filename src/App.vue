@@ -8,6 +8,8 @@
   <div v-for="(product, index) in products" :key="product">
     <h4>{{ product }}</h4>
     <p>{{ prices[index] + " 만원" }}</p>
+    <button @click="increase(index)">허위매물 신고</button>
+    <span>신고수: {{ singo[index] }}</span>
   </div>
 </template>
 
@@ -25,7 +27,13 @@ export default {
       products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
       prices: [50, 60, 70],
       menu: ["Home", "Products", "About"],
+      singo: [0, 0, 0],
     };
+  },
+  methods: {
+    increase(index) {
+      this.singo[index]++;
+    },
   },
 };
 </script>
