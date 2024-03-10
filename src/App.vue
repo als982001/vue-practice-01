@@ -111,9 +111,5 @@ div {
   color: white;
   padding: 10px;
 }
-
-.room-img {
-  width: 100%;
-}
 </style>
 import onerooms from "./assets/onerooms";
