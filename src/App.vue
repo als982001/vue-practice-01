@@ -5,20 +5,26 @@
     :onerooms="onerooms"
     :showModal="showModal"
     :clickedIndex="clickedIndex"
-    :handleRemoveModal="handleRemoveModal"
+    :handleCloseModal="handleCloseModal"
+    @closeModal="handleCloseModal()"
   />
   <h1 :style="titleStyle">원룸보여줌</h1>
   <Discount />
   <div class="menu">
     <a v-for="(item, index) in menu" :key="item">{{ `${index}. ${item}` }}</a>
   </div>
-  <div v-for="(oneroom, index) in onerooms" :key="oneroom.title">
-    <ProductInfo
-      :oneroom="oneroom"
-      :handleShowModal="handleShowModal"
-      :index="index"
-    />
-  </div>
+
+  <ProductInfo
+    v-for="(oneroom, index) in onerooms"
+    :key="oneroom.title"
+    :oneroom="oneroom"
+    :handleShowModal="handleShowModal"
+    :index="index"
+    @openModal="
+      showModal = true;
+      clickedIndex = $event;
+    "
+  />
 </template>
 
 <script>
@@ -53,7 +59,7 @@ export default {
     increase(index) {
       this.singo[index]++;
     },
-    handleRemoveModal() {
+    handleCloseModal() {
       this.showModal = false;
       this.clickedIndex = -1;
     },

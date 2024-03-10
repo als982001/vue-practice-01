@@ -1,9 +1,10 @@
 <template>
   <div class="black-bg" v-if="showModal">
     <div class="white-bg">
+      <img :src="onerooms[clickedIndex].image" class="room-img" />
       <h4>{{ onerooms[clickedIndex].title }}</h4>
       <p>{{ onerooms[clickedIndex].content }}</p>
-      <button @click="handleRemoveModal()">닫기</button>
+      <button @click="$emit('closeModal')">닫기</button>
     </div>
   </div>
 </template>
@@ -15,7 +16,7 @@ export default {
     showModal: Boolean,
     clickedIndex: Number,
     onerooms: Array,
-    handleRemoveModal: Function,
+    handleCloseModal: Function,
   },
 };
 </script>
