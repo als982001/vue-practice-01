@@ -1,12 +1,14 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <InfoModal
     :onerooms="onerooms"
     :showModal="showModal"
     :clickedIndex="clickedIndex"
     :handleCloseModal="handleCloseModal"
-    @closeModal="handleCloseModal()"
+    @closeModal="
+      console.log($event);
+      handleCloseModal();
+    "
   />
   <h1 :style="titleStyle">원룸보여줌</h1>
   <Discount />
@@ -37,7 +39,6 @@ import ProductInfo from "./components/ProductInfo";
 export default {
   name: "App",
   components: {
-    // HelloWorld,
     Discount: DiscountComponent,
     InfoModal,
     ProductInfo,
