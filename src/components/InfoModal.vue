@@ -5,7 +5,7 @@
       <h4>{{ onerooms[clickedIndex].title }}</h4>
       <p>{{ onerooms[clickedIndex].content }}</p>
       <input placeholder="달 입력" v-model="month" />
-      <p>가격: {{ 100000 * month }}</p>
+      <p>가격: {{ (100000 * Number(month)).toLocaleString() }}</p>
       <input placeholder="hahaha" @input="hahaha = $event.target.value" />
       <p>hahaha: {{ hahaha }}</p>
       <button @click="$emit('closeModal', { hahaha: 'hahaha' })">닫기</button>
@@ -18,7 +18,7 @@ export default {
   name: "InfoModal",
   data() {
     return {
-      month: 1,
+      month: "",
       hahaha: "",
     };
   },
@@ -35,6 +35,12 @@ export default {
       console.log(`${beforeValue} => ${currentValue}`);
     },
   },
+  updated() {
+    if (this.month.includes("2")) {
+      alert("2 안됨");
+      this.month = "";
+    }
+  },
   props: {
     showModal: Boolean,
     clickedIndex: Number,
@@ -45,4 +51,5 @@ export default {
 </script>
 
 <style></style>
-import { values } from 'core-js/core/array';
+import { values } from 'core-js/core/array'; import { includes } from
+'core-js/core/array';

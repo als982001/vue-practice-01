@@ -19,7 +19,7 @@
   </Transition>
 
   <h1 :style="titleStyle">원룸보여줌</h1>
-  <Discount />
+  <Discount :discountValue="discountValue" />
   <div class="menu">
     <a v-for="(item, index) in menu" :key="item">{{ `${index}. ${item}` }}</a>
   </div>
@@ -68,6 +68,7 @@ export default {
       onerooms: [...onerooms],
       originalOnerooms: [...onerooms],
       clickedIndex: -1,
+      discountValue: 30,
     };
   },
   methods: {
@@ -88,6 +89,15 @@ export default {
     sortBack() {
       this.onerooms = [...this.originalOnerooms];
     },
+  },
+  mounted() {
+    let decreaseDiscountId = setInterval(() => {
+      --this.discountValue;
+
+      if (this.discountValue <= 0) {
+        clearInterval(decreaseDiscountId);
+      }
+    }, [1000]);
   },
 };
 </script>
