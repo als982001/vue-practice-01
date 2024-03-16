@@ -4,7 +4,7 @@
     <h4 @click="openModal()">
       {{ oneroom.title }}
     </h4>
-    <p>{{ oneroom.price }}원</p>
+    <p>{{ oneroom.price.toLocaleString() }}원</p>
   </div>
 </template>
 

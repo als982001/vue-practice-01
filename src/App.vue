@@ -24,6 +24,11 @@
     <a v-for="(item, index) in menu" :key="item">{{ `${index}. ${item}` }}</a>
   </div>
 
+  <div>
+    <button @click="sortByPrice()">가격 순 정렬</button>
+    <button @click="sortBack()">원래대로</button>
+  </div>
+
   <ProductInfo
     v-for="(oneroom, index) in onerooms"
     :key="oneroom.title"
@@ -60,7 +65,8 @@ export default {
       singo: [0, 0, 0],
       imgs: ["./assets/room0.jpg", "./assets/room1.jpg", "./assets/room2.jpg"],
       showModal: false,
-      onerooms,
+      onerooms: [...onerooms],
+      originalOnerooms: [...onerooms],
       clickedIndex: -1,
     };
   },
@@ -75,6 +81,12 @@ export default {
     handleShowModal(index) {
       this.showModal = true;
       this.clickedIndex = index;
+    },
+    sortByPrice() {
+      this.onerooms.sort((a, b) => a.price - b.price);
+    },
+    sortBack() {
+      this.onerooms = [...this.originalOnerooms];
     },
   },
 };
@@ -160,4 +172,3 @@ div {
   opacity: 0;
 }
 </style>
-import onerooms from "./assets/onerooms";
