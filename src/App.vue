@@ -1,15 +1,23 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <InfoModal
-    :onerooms="onerooms"
-    :showModal="showModal"
-    :clickedIndex="clickedIndex"
-    :handleCloseModal="handleCloseModal"
-    @closeModal="
-      console.log($event);
-      handleCloseModal();
-    "
-  />
+
+  <div class="start" :class="{ end: showModal }">
+    <div>ㅋㅋㅋㅋㅋ</div>
+  </div>
+
+  <Transition name="fade">
+    <InfoModal
+      :onerooms="onerooms"
+      :showModal="showModal"
+      :clickedIndex="clickedIndex"
+      :handleCloseModal="handleCloseModal"
+      @closeModal="
+        console.log($event);
+        handleCloseModal();
+      "
+    />
+  </Transition>
+
   <h1 :style="titleStyle">원룸보여줌</h1>
   <Discount />
   <div class="menu">
@@ -34,7 +42,7 @@
 import onerooms from "./assets/onerooms";
 import DiscountComponent from "./components/DiscountComponent.vue";
 import InfoModal from "./components/InfoModal.vue";
-import ProductInfo from "./components/ProductInfo";
+import ProductInfo from "./components/ProductInfo.vue";
 
 export default {
   name: "App",
@@ -117,6 +125,39 @@ div {
 .menu a {
   color: white;
   padding: 10px;
+}
+
+.start {
+  opacity: 0;
+  transition: all 1s;
+}
+
+.end {
+  opacity: 1;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 1s;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-leave-active {
+  transition: all 3s;
+}
+
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
 import onerooms from "./assets/onerooms";
