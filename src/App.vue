@@ -56,6 +56,7 @@ export default {
     InfoModal,
     ProductInfo,
   },
+
   data() {
     return {
       titleStyle: "color: blue",
